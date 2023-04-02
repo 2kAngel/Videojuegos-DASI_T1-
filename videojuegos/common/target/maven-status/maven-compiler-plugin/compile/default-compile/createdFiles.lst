@@ -1,0 +1,5 @@
+es/upsa/dasi/videojuegos/exceptions/VideojuegoException.class
+es/upsa/dasi/videojuegos/exceptions/EntityNotFoundException.class
+es/upsa/dasi/videojuegos/model/Videojuego.class
+es/upsa/dasi/videojuegos/model/Videojuego$VideojuegoBuilder.class
+es/upsa/dasi/videojuegos/exceptions/VideojuegoNotFoundException.class

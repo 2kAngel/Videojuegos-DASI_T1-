@@ -1,5 +1,12 @@
 DROP TABLE VIDEOJUEGOS;
 DROP TABLE DESARROLLADORAS;
+DROP TABLE PLATAFORMAS;
+
+DROP SEQUENCE seq_videojuegos;
+DROP SEQUENCE seq_desarrolladoras;
+DROP SEQUENCE seq_plataformas;
+
+
 
 CREATE TABLE VIDEOJUEGOS
 (
@@ -28,10 +35,22 @@ CREATE TABLE DESARROLLADORAS
         CONSTRAINT "NN_NACIONALIDAD" CHECK ( NACIONALIDAD IS NOT NULL )
 );
 
+CREATE TABLE PLATAFORMAS
+(
+    ID VARCHAR(9),
+    NOMBRE VARCHAR(100),
+    FECHA_LANZAMIENTO DATE,
+    FOTO VARCHAR(200),
+
+    CONSTRAINT "PK_PLATAFORMAS" PRIMARY KEY (ID),
+    CONSTRAINT "NN_NOMBRE" CHECK ( NOMBRE IS NOT NULL )
+);
+
 
 
 CREATE SEQUENCE seq_videojuegos MINVALUE 1 MAXVALUE 999999998 START WITH 1 INCREMENT BY 1;
-CREATE SEQUENCE seq_personajes MINVALUE 1 MAXVALUE 999999998 START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE seq_desarrolladoras MINVALUE 1 MAXVALUE 999999998 START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE seq_plataformas MINVALUE 1 MAXVALUE 999999998 START WITH 1 INCREMENT BY 1;
 
 
 
@@ -57,3 +76,13 @@ INSERT INTO DESARROLLADORAS(ID,     NOMBRE,     NACIONALIDAD,       FECHA_CREACI
 
 INSERT INTO DESARROLLADORAS(ID,     NOMBRE,     NACIONALIDAD,       FECHA_CREACION,     FOTO)
                             VALUES ('3', 'Activision', 'Francia', to_date('01-07-1979', 'dd-mm-yyyy'), 'https://static.wikia.nocookie.net/prototype/images/f/f4/Activision.jpg/revision/latest?cb=20120403172713&path-prefix=es');
+
+
+INSERT INTO PLATAFORMAS(ID,     NOMBRE,     FECHA_LANZAMIENTO,      FOTO)
+                        VALUES('1', 'PlayStation 3', to_date('11-08-2006', 'dd-mm-yyyy'), 'https://i.ebayimg.com/images/g/EtUAAOSwCBVj28ah/s-l640.jpg');
+
+INSERT INTO PLATAFORMAS(ID,     NOMBRE,     FECHA_LANZAMIENTO,      FOTO)
+                        VALUES('2', 'Xbox 360', to_date('22-08-2005', 'dd-mm-yyyy'), 'https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/41God7KwSOL._AC_.jpg');
+
+INSERT INTO PLATAFORMAS(ID,     NOMBRE,     FECHA_LANZAMIENTO,      FOTO)
+                        VALUES('3', 'PlayStation 4', to_date('15-08-2013', 'dd-mm-yyyy'), 'https://gmedia.playstation.com/is/image/SIEPDC/ps4-product-thumbnail-01-en-14sep21?$facebook$');
