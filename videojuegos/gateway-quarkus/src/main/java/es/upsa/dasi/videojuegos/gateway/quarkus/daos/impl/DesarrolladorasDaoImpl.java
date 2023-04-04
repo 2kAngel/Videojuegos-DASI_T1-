@@ -1,2 +1,4 @@
-package es.upsa.dasi.videojuegos.gateway.quarkus.daos.impl;public class DesarrolladorasDaoImpl {
+package es.upsa.dasi.videojuegos.gateway.quarkus.daos.impl;
+
+public class DesarrolladorasDaoImpl {
 }
