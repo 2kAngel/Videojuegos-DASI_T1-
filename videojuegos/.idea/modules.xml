@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/desarrolladoras-quarkus/desarrolladoras-quarkus.iml" filepath="$PROJECT_DIR$/desarrolladoras-quarkus/desarrolladoras-quarkus.iml" />
       <module fileurl="file://$PROJECT_DIR$/videojuegos-quarkus/videojuegos-quarkus.iml" filepath="$PROJECT_DIR$/videojuegos-quarkus/videojuegos-quarkus.iml" />
     </modules>
   </component>

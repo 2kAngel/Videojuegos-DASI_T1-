@@ -35,7 +35,7 @@ public class VideojuegosResource {
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getPeliculaById( @PathParam("id") String id ) throws VideojuegoException
+    public Response getVideojuegoById( @PathParam("id") String id ) throws VideojuegoException
     {
         Optional<Videojuego> optional = service.findVideojuegoById(id);
         if ( optional.isPresent() )

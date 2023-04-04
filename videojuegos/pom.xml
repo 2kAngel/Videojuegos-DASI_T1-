@@ -11,6 +11,8 @@
 
     <modules>
         <module>videojuegos-quarkus</module>
+        <module>desarrolladoras-quarkus</module>
+        <module>common-quarkus</module>
         <module>common</module>
     </modules>
 
