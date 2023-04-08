@@ -10,4 +10,7 @@ public interface Service {
 
     public List<Desarrolladora> findDesarrolladoras() throws VideojuegoException;
     public Optional<Desarrolladora> findDesarrolladoraById(String id) throws VideojuegoException;
+    public void updateDesarrolladoraById(Desarrolladora desarrolladora) throws VideojuegoException;
+    public void deleteDesarrolladoraById(String id) throws VideojuegoException;
+    Desarrolladora createDesarrolladora(Desarrolladora desarrolladora) throws VideojuegoException;
 }

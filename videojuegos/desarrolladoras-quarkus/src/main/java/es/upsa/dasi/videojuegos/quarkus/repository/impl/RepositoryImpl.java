@@ -27,4 +27,22 @@ public class RepositoryImpl implements Repository {
 
         return databaseDao.selectDesarrolladoraById(id);
     }
+
+    @Override
+    public void replaceDesarrolladoraById(Desarrolladora desarrolladora) throws VideojuegoException {
+
+        databaseDao.updateDesarrolladora(desarrolladora);
+    }
+
+    @Override
+    public void removeDesarrolladoraById(String id) throws VideojuegoException {
+
+        databaseDao.deleteDesarrolladoraById(id);
+    }
+
+    @Override
+    public Desarrolladora addDesarrolladora(Desarrolladora desarrolladora) throws VideojuegoException {
+
+        return databaseDao.insertDesarrolladora(desarrolladora);
+    }
 }

@@ -5,6 +5,7 @@
     <file type="Quarkus" url="file://$PROJECT_DIR$/common-quarkus" />
     <file type="Quarkus" url="file://$PROJECT_DIR$/desarrolladoras-quarkus" />
     <file type="Quarkus" url="file://$PROJECT_DIR$/gateway-quarkus" />
+    <file type="Quarkus" url="file://$PROJECT_DIR$/plataformas-quarkus" />
     <file type="Quarkus" url="file://$PROJECT_DIR$/videojuegos-quarkus" />
   </component>
   <component name="MavenProjectsManager">
@@ -15,6 +16,7 @@
         <option value="$PROJECT_DIR$/common-quarkus/pom.xml" />
         <option value="$PROJECT_DIR$/desarrolladoras-quarkus/pom.xml" />
         <option value="$PROJECT_DIR$/gateway-quarkus/pom.xml" />
+        <option value="$PROJECT_DIR$/plataformas-quarkus/pom.xml" />
       </list>
     </option>
   </component>

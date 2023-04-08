@@ -27,4 +27,22 @@ public class ServiceImpl implements Service {
 
         return repository.getDesarrolladoraById(id);
     }
+
+    @Override
+    public void updateDesarrolladoraById(Desarrolladora desarrolladora) throws VideojuegoException {
+
+        repository.replaceDesarrolladoraById(desarrolladora);
+    }
+
+    @Override
+    public void deleteDesarrolladoraById(String id) throws VideojuegoException {
+
+        repository.removeDesarrolladoraById(id);
+    }
+
+    @Override
+    public Desarrolladora createDesarrolladora(Desarrolladora desarrolladora) throws VideojuegoException {
+
+        return repository.addDesarrolladora(desarrolladora);
+    }
 }

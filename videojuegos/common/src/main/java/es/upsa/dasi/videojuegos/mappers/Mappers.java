@@ -3,7 +3,10 @@ package es.upsa.dasi.videojuegos.mappers;
 import es.upsa.dasi.videojuegos.dtos.UnidentifiedDesarrolladora;
 import es.upsa.dasi.videojuegos.dtos.UnidentifiedVideojuego;
 import es.upsa.dasi.videojuegos.model.Desarrolladora;
+import es.upsa.dasi.videojuegos.model.Plataformas;
 import es.upsa.dasi.videojuegos.model.Videojuego;
+
+import java.util.List;
 
 public class Mappers {
 
@@ -35,5 +38,24 @@ public class Mappers {
                 .withFecha_creacion(unidentifiedDesarrolladora.fecha_creacion())
                 .withFoto(unidentifiedDesarrolladora.foto())
                 .build();
+    }
+
+    public Plataformas toPlataforma(String id, List<Plataformas> plataformas)
+    {
+        Plataformas.PlataformasBuilder builder = Plataformas.builder();
+        builder.withId(id);
+
+        for (Plataformas plataforma : plataformas)
+        {
+            builder.withId(id)
+                    .withId_videojuego(plataforma.id_videojuego())
+                    .withId_desarrolladora(plataforma.id_desarrolladora())
+                    .withNombre(plataforma.nombre())
+                    .withFecha_lanzamiento(plataforma.fecha_lanzamiento())
+                    .withFoto(plataforma.foto())
+                    .build();
+        }
+
+        return builder.build();
     }
 }

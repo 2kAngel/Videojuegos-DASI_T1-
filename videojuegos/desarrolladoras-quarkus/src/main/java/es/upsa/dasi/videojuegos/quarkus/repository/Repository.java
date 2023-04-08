@@ -10,4 +10,7 @@ public interface Repository {
 
     public List<Desarrolladora> getDesarrolladoras() throws VideojuegoException;
     public Optional<Desarrolladora> getDesarrolladoraById(String id) throws VideojuegoException;
+    public void replaceDesarrolladoraById(Desarrolladora desarrolladora) throws VideojuegoException;
+    public void removeDesarrolladoraById(String id) throws VideojuegoException;
+    Desarrolladora addDesarrolladora(Desarrolladora desarrolladora) throws VideojuegoException;
 }

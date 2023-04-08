@@ -1,5 +1,6 @@
 package es.upsa.dasi.videojuegos.quarkus.daos.impl;
 
+import es.upsa.dasi.videojuegos.exceptions.DesarrolladoraNotFoundException;
 import es.upsa.dasi.videojuegos.exceptions.VideojuegoException;
 import es.upsa.dasi.videojuegos.model.Desarrolladora;
 import es.upsa.dasi.videojuegos.quarkus.daos.DatabaseDao;
@@ -76,6 +77,89 @@ public class PostgresDatabaseDao implements DatabaseDao {
                         .build()
                 );
             }
+        } catch (SQLException sqlException)
+        {
+            throw new VideojuegoException(sqlException);
+        }
+    }
+
+    @Override
+    public void updateDesarrolladora(Desarrolladora desarrolladora) throws VideojuegoException {
+
+        final String SQL = """
+                           UPDATE desarrolladoras
+                              SET nombre = ?, nacionalidad = ?, fecha_creacion = ?, foto = ?
+                            WHERE id = ?   
+                           """;
+
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(SQL)
+        )
+        {
+            preparedStatement.setString(1, desarrolladora.nombre());
+            preparedStatement.setString(2, desarrolladora.nacionalidad());
+            preparedStatement.setDate(3, (Date) desarrolladora.fecha_creacion());
+            preparedStatement.setString(4, desarrolladora.foto());
+            preparedStatement.setString(5, desarrolladora.id());
+
+            int count = preparedStatement.executeUpdate();
+            if ( count == 0 ) throw new DesarrolladoraNotFoundException(desarrolladora.id());
+
+        } catch (SQLException sqlException)
+        {
+            throw new VideojuegoException(sqlException);
+
+        }
+    }
+
+    @Override
+    public void deleteDesarrolladoraById(String id) throws VideojuegoException {
+
+        final String SQL = """
+                           DELETE 
+                             FROM desarrolladoras
+                            WHERE id = ?
+                           """;
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(SQL)
+        )
+        {
+            preparedStatement.setString(1, id);
+
+            int count = preparedStatement.executeUpdate();
+            if ( count == 0 ) throw new DesarrolladoraNotFoundException(id);
+
+        } catch (SQLException sqlException)
+        {
+            throw new VideojuegoException(sqlException);
+
+        }
+    }
+
+    @Override
+    public Desarrolladora insertDesarrolladora(Desarrolladora desarrolladora) throws VideojuegoException {
+
+        final String SQL = """
+                            INSERT INTO desarrolladoras(id, nombre, nacionalidad, fecha_creacion, foto)
+                                          VALUES(nextval('seq_desarrolladoras'), ?, ?, ?, ?)
+                           """;
+        String[] columns = { "id" };
+
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(SQL, columns)
+        )
+        {
+            preparedStatement.setString(1, desarrolladora.nombre());
+            preparedStatement.setString(2, desarrolladora.nacionalidad());
+            preparedStatement.setDate(3, (Date) desarrolladora.fecha_creacion());
+            preparedStatement.setString(4, desarrolladora.foto());
+            preparedStatement.executeUpdate();
+            try (ResultSet rs = preparedStatement.getGeneratedKeys() )
+            {
+                rs.next();
+                return desarrolladora.withId( rs.getString(1) );
+            }
+
         } catch (SQLException sqlException)
         {
             throw new VideojuegoException(sqlException);

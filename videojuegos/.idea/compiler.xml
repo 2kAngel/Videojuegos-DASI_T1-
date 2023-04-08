@@ -6,11 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="common.quarkus" />
         <module name="gateway-quarkus" />
-        <module name="videojuegos-quarkus" />
         <module name="common-quarkus" />
         <module name="common" />
+        <module name="videojuegos-quarkus" />
         <module name="desarrolladoras-quarkus" />
+        <module name="plataformas-quarkus" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -21,8 +23,10 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="code-with-quarkus" options="-parameters" />
       <module name="common-quarkus" options="-parameters" />
+      <module name="common.quarkus" options="-parameters" />
       <module name="desarrolladoras-quarkus" options="-parameters" />
       <module name="gateway-quarkus" options="-parameters" />
+      <module name="plataformas-quarkus" options="-parameters" />
       <module name="videojuegos-quarkus" options="-parameters" />
     </option>
   </component>

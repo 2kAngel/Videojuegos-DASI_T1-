@@ -25,10 +25,10 @@ public class VideojuegosDaoImpl implements VideojuegosDao
     @Override
     public List<Videojuego> requestVideojuegos() throws VideojuegoException {
         Response response = ClientBuilder.newBuilder()
-                .build()
-                .target("http://localhost:8081/games")
-                .request(MediaType.APPLICATION_JSON_TYPE)
-                .get();
+                                         .build()
+                                         .target("http://localhost:8081/games")
+                                         .request(MediaType.APPLICATION_JSON_TYPE)
+                                         .get();
 
         switch ( response.getStatus() )
         {
@@ -45,11 +45,11 @@ public class VideojuegosDaoImpl implements VideojuegosDao
     @Override
     public Videojuego requestVideojuegoById(String id) throws VideojuegoException {
         Response response = ClientBuilder.newBuilder()
-                .build()
-                .target("http://localhost:8081/games/{id}")
-                .resolveTemplate("id", id)
-                .request(MediaType.APPLICATION_JSON_TYPE)
-                .get();
+                                         .build()
+                                         .target("http://localhost:8081/games/{id}")
+                                         .resolveTemplate("id", id)
+                                         .request(MediaType.APPLICATION_JSON_TYPE)
+                                         .get();
 
         switch ( response.getStatus() )
         {
@@ -66,10 +66,10 @@ public class VideojuegosDaoImpl implements VideojuegosDao
     @Override
     public Videojuego requestInsertVideojuego(Videojuego videojuego) throws VideojuegoException {
         Response response = ClientBuilder.newBuilder()
-                .build()
-                .target("http://localhost:8081/games")
-                .request(MediaType.APPLICATION_JSON_TYPE)
-                .post( Entity.json(videojuego) );
+                                         .build()
+                                         .target("http://localhost:8081/games")
+                                         .request(MediaType.APPLICATION_JSON_TYPE)
+                                         .post( Entity.json(videojuego) );
         switch ( response.getStatus() )
         {
             case 201: return response.readEntity( Videojuego.class );
@@ -82,11 +82,11 @@ public class VideojuegosDaoImpl implements VideojuegosDao
     @Override
     public Videojuego requestUpdateVideojuego(Videojuego videojuego) throws VideojuegoException {
         Response response = ClientBuilder.newBuilder()
-                .build()
-                .target("http://localhost:8081/games/{id}")
-                .resolveTemplate("id", videojuego.id())
-                .request(MediaType.APPLICATION_JSON_TYPE)
-                .put( Entity.json(videojuego) );
+                                         .build()
+                                         .target("http://localhost:8081/games/{id}")
+                                         .resolveTemplate("id", videojuego.id())
+                                         .request(MediaType.APPLICATION_JSON_TYPE)
+                                         .put( Entity.json(videojuego) );
         switch ( response.getStatus() )
         {
             case 204: return videojuego;
@@ -101,11 +101,11 @@ public class VideojuegosDaoImpl implements VideojuegosDao
     @Override
     public void requestDeleteVideojuego(String id) throws VideojuegoException {
         Response response = ClientBuilder.newBuilder()
-                .build()
-                .target("http://localhost:8081/games/{id}")
-                .resolveTemplate("id", id)
-                .request()
-                .delete(  );
+                                         .build()
+                                         .target("http://localhost:8081/games/{id}")
+                                         .resolveTemplate("id", id)
+                                         .request()
+                                         .delete(  );
         switch ( response.getStatus() )
         {
             case 204: return ;

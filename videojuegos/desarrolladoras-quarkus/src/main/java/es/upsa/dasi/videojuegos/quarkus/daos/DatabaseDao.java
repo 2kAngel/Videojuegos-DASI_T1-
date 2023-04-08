@@ -11,4 +11,8 @@ public interface DatabaseDao {
 
     public List<Desarrolladora> selectDesarrolladoras() throws VideojuegoException;
     public Optional<Desarrolladora> selectDesarrolladoraById(String id) throws VideojuegoException;
+    public void updateDesarrolladora(Desarrolladora desarrolladora) throws VideojuegoException;
+    public void deleteDesarrolladoraById(String id) throws VideojuegoException;
+
+    public Desarrolladora insertDesarrolladora(Desarrolladora desarrolladora) throws VideojuegoException;
 }

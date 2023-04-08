@@ -7,9 +7,10 @@ import es.upsa.dasi.videojuegos.gateway.quarkus.repository.Repository;
 import es.upsa.dasi.videojuegos.model.Desarrolladora;
 import es.upsa.dasi.videojuegos.model.Videojuego;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import java.util.List;
-
+@ApplicationScoped
 public class RepositoryImpl implements Repository
 {
 

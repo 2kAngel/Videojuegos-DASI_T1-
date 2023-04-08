@@ -22,4 +22,6 @@ public interface Repository
     public Desarrolladora findUpdateDesarrolladora(Desarrolladora desarrolladora) throws VideojuegoException;
     public void findDeleteDesarrolladora(String id) throws VideojuegoException;
 
+    //-----------------------------------------------
+
 }
