@@ -1,6 +1,7 @@
 package es.upsa.dasi.videojuegos.gateway.quarkus.daos.impl;
 
 import es.upsa.dasi.videojuegos.dtos.ErrorMessage;
+import es.upsa.dasi.videojuegos.exceptions.DesarrolladoraNotFoundException;
 import es.upsa.dasi.videojuegos.exceptions.PlataformaNotFoundException;
 import es.upsa.dasi.videojuegos.exceptions.VideojuegoException;
 import es.upsa.dasi.videojuegos.exceptions.VideojuegoNotFoundException;
@@ -51,7 +52,7 @@ public class DesarrolladorasDaoImpl implements DesarrolladorasDao
             case 200:   Desarrolladora desarrolladora = response.readEntity( Desarrolladora.class );
                 return desarrolladora;
 
-            case 404:   throw new PlataformaNotFoundException(id);
+            case 404:   throw new DesarrolladoraNotFoundException(id);
 
             default:    ErrorMessage errorMessage = response.readEntity( ErrorMessage.class );
                 throw new VideojuegoException( errorMessage.message() );
@@ -86,7 +87,7 @@ public class DesarrolladorasDaoImpl implements DesarrolladorasDao
         {
             case 204: return desarrolladora;
 
-            case 404: throw new PlataformaNotFoundException( desarrolladora.id() );
+            case 404: throw new DesarrolladoraNotFoundException( desarrolladora.id() );
 
             default: ErrorMessage errorMessage = response.readEntity( ErrorMessage.class );
                 throw new VideojuegoException( errorMessage.message() );
@@ -105,7 +106,7 @@ public class DesarrolladorasDaoImpl implements DesarrolladorasDao
         {
             case 204: return ;
 
-            case 404: throw new PlataformaNotFoundException( id );
+            case 404: throw new DesarrolladoraNotFoundException( id );
 
             default: ErrorMessage errorMessage = response.readEntity( ErrorMessage.class );
                 throw new VideojuegoException( errorMessage.message() );
