@@ -11,6 +11,7 @@ public record Plataformas(String id,
                           String id_videojuego,
                           String id_desarrolladora,
                           String nombre,
+
                           Date fecha_lanzamiento,
                           String foto) {
 }

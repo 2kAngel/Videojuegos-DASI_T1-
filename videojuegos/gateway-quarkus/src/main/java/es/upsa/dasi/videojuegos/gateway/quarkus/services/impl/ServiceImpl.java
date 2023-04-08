@@ -4,11 +4,13 @@ import es.upsa.dasi.videojuegos.exceptions.VideojuegoException;
 import es.upsa.dasi.videojuegos.gateway.quarkus.repository.Repository;
 import es.upsa.dasi.videojuegos.gateway.quarkus.services.Service;
 import es.upsa.dasi.videojuegos.model.Desarrolladora;
+import es.upsa.dasi.videojuegos.model.Plataformas;
 import es.upsa.dasi.videojuegos.model.Videojuego;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import java.util.List;
+import java.util.Optional;
 
 @ApplicationScoped
 public class ServiceImpl implements Service
@@ -65,5 +67,10 @@ public class ServiceImpl implements Service
     @Override
     public void demandDeleteDesarrolladora(String id) throws VideojuegoException {
         repository.findDeleteDesarrolladora(id);
+    }
+//----------------------------------------------------------------
+    @Override
+    public Optional<Plataformas> demandPlataformaVideojuego(String id) throws VideojuegoException {
+        return repository.findPlataformaVideojuego(id);
     }
 }

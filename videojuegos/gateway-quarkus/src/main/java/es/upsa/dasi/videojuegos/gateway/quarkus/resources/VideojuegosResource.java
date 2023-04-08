@@ -1,8 +1,12 @@
 package es.upsa.dasi.videojuegos.gateway.quarkus.resources;
 
+import es.upsa.dasi.videojuegos.dtos.FullVideojuego;
+import es.upsa.dasi.videojuegos.entity.Plataforma;
 import es.upsa.dasi.videojuegos.exceptions.VideojuegoException;
 import es.upsa.dasi.videojuegos.gateway.quarkus.services.Service;
+import es.upsa.dasi.videojuegos.mappers.Mappers;
 import es.upsa.dasi.videojuegos.model.Desarrolladora;
+import es.upsa.dasi.videojuegos.model.Plataformas;
 import es.upsa.dasi.videojuegos.model.Videojuego;
 
 import javax.inject.Inject;
@@ -42,9 +46,24 @@ public class VideojuegosResource
     public Response getVideojuegoById(@PathParam("id") String id) throws VideojuegoException
     {
         Videojuego videojuego = service.demandVideojuegoById(id);
+        Optional<Plataformas> optPlataformas = service.demandPlataformaVideojuego(id);
+
+        Mappers mappers = new Mappers();
+        FullVideojuego fullVideojuego = mappers.toFullVideojuego(videojuego);
+
+        if(optPlataformas.isPresent()){
+            Plataformas plataformas = optPlataformas.get();
+
+            //<---> Aqui irían los list que puedes add a los videojuegos (reparto, programadores, ...)
+            //este if sin meter nada realmente no tiene mucho sentido
 
 
-        return null;
+
+        }
+        return Response.ok()
+                .entity(fullVideojuego)
+                .build();
+
     }
     //----------------------------------------------------
 }

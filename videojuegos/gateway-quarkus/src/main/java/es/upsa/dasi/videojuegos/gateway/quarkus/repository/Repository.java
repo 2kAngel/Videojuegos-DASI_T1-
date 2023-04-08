@@ -2,9 +2,11 @@ package es.upsa.dasi.videojuegos.gateway.quarkus.repository;
 
 import es.upsa.dasi.videojuegos.exceptions.VideojuegoException;
 import es.upsa.dasi.videojuegos.model.Desarrolladora;
+import es.upsa.dasi.videojuegos.model.Plataformas;
 import es.upsa.dasi.videojuegos.model.Videojuego;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface Repository
 {
@@ -23,5 +25,7 @@ public interface Repository
     public void findDeleteDesarrolladora(String id) throws VideojuegoException;
 
     //-----------------------------------------------
+
+    public Optional<Plataformas> findPlataformaVideojuego(String id) throws VideojuegoException;
 
 }
