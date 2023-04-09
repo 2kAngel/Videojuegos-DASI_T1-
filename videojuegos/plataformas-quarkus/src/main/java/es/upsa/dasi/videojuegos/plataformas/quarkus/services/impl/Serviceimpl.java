@@ -7,6 +7,7 @@ import es.upsa.dasi.videojuegos.plataformas.quarkus.services.Service;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import java.util.List;
 
 @ApplicationScoped
 public class Serviceimpl implements Service {
@@ -17,5 +18,10 @@ public class Serviceimpl implements Service {
     public Plataformas getPlataformasVideojuego(String id) throws VideojuegoException {
 
         return repository.findPlataformasVideojuego(id);
+    }
+
+    @Override
+    public List<Plataformas> getPlataformas() throws VideojuegoException {
+        return repository.findPlataformas();
     }
 }

@@ -3,15 +3,13 @@ package es.upsa.dasi.videojuegos.plataformas.quarkus.daos.impl;
 import es.upsa.dasi.videojuegos.exceptions.VideojuegoException;
 import es.upsa.dasi.videojuegos.mappers.Mappers;
 import es.upsa.dasi.videojuegos.model.Plataformas;
+import es.upsa.dasi.videojuegos.model.Videojuego;
 import es.upsa.dasi.videojuegos.plataformas.quarkus.daos.DatabaseDao;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +24,7 @@ public class PostgresDatabaseDao implements DatabaseDao {
         List<Plataformas> plataformas = new ArrayList<>();
 
         final String SQL = """
-                           SELECT p.id, p.id_desarrolladora, p.nombre, p.fecha_lanzamiento, p.foto
+                           SELECT p.id,p.id_videojuego, p.id_desarrolladora, p.nombre, p.fecha_lanzamiento, p.foto
                              FROM plataformas p
                             WHERE p.id_videojuego = ? 
                            """;
@@ -42,10 +40,11 @@ public class PostgresDatabaseDao implements DatabaseDao {
                 {
                     plataformas.add( Plataformas.builder()
                             .withId( resultSet.getString(1) )
-                            .withId_desarrolladora( resultSet.getString(2) )
-                            .withNombre(resultSet.getString(3))
-                            .withFecha_lanzamiento(resultSet.getDate(4))
-                            .withFoto(resultSet.getString(5))
+                            .withId_videojuego(resultSet.getString(2))
+                            .withId_desarrolladora( resultSet.getString(3) )
+                            .withNombre(resultSet.getString(4))
+                            .withFecha_lanzamiento(resultSet.getDate(5))
+                            .withFoto(resultSet.getString(6))
                             .build()
                     );
                 }
@@ -57,5 +56,40 @@ public class PostgresDatabaseDao implements DatabaseDao {
         Mappers mappers = new Mappers();
 
         return mappers.toPlataforma(id, plataformas);
+    }
+
+    @Override
+    public List<Plataformas> selectPlataformas() throws VideojuegoException {
+        List<Plataformas> plataformas = new ArrayList<>();
+
+        String SQL = """
+                     SELECT p.id,p.id_videojuego, p.id_desarrolladora, p.nombre, p.fecha_lanzamiento, p.foto
+                             FROM plataformas p
+                     """;
+
+        try (Connection connection = dataSource.getConnection();
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(SQL))
+        {
+
+            while (resultSet.next() )
+            {
+                plataformas.add( Plataformas.builder()
+                        .withId( resultSet.getString(1) )
+                        .withId_videojuego(resultSet.getString(2))
+                        .withId_desarrolladora(resultSet.getString(3))
+                        .withNombre( resultSet.getString(4) )
+                        .withFecha_lanzamiento( resultSet.getDate(5) )
+                        .withFoto(resultSet.getString(6))
+                        .build()
+                );
+            }
+
+        } catch (SQLException sqlException)
+        {
+
+            throw new VideojuegoException(sqlException);
+        }
+        return plataformas;
     }
 }
