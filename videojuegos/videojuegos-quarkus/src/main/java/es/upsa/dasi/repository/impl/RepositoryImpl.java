@@ -27,4 +27,19 @@ public class RepositoryImpl implements Repository {
 
         return databaseDao.selectVideojuegoById(id);
     }
+
+    @Override
+    public void updateVideojuego(Videojuego videojuego) throws VideojuegoException {
+        databaseDao.updateVideojuego(videojuego);
+    }
+
+    @Override
+    public void deleteVideojuegoById(String id) throws VideojuegoException {
+        databaseDao.deleteVideojuegoById(id);
+    }
+
+    @Override
+    public Videojuego insertVideojuego(Videojuego videojuego) throws VideojuegoException {
+        return databaseDao.insertVideojuego(videojuego);
+    }
 }

@@ -10,4 +10,9 @@ public interface Service {
 
     public List<Videojuego> findVideojuegos() throws VideojuegoException;
     public Optional<Videojuego> findVideojuegoById(String id) throws VideojuegoException;
+
+    public void updateVideojuego(Videojuego videojuego) throws VideojuegoException;
+    public void deleteVideojuegoById(String id) throws VideojuegoException;
+
+    public Videojuego insertVideojuego(Videojuego videojuego) throws VideojuegoException;
 }

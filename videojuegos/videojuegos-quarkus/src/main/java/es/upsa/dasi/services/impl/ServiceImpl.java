@@ -27,4 +27,19 @@ public class ServiceImpl implements Service {
 
         return repository.getVideojuegoById(id);
     }
+
+    @Override
+    public void updateVideojuego(Videojuego videojuego) throws VideojuegoException {
+        repository.updateVideojuego(videojuego);
+    }
+
+    @Override
+    public void deleteVideojuegoById(String id) throws VideojuegoException {
+        repository.deleteVideojuegoById(id);
+    }
+
+    @Override
+    public Videojuego insertVideojuego(Videojuego videojuego) throws VideojuegoException {
+        return repository.insertVideojuego(videojuego);
+    }
 }
