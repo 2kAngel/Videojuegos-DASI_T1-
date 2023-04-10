@@ -62,6 +62,7 @@ public class PostgresDatabaseDao implements DatabaseDao {
                              FROM videojuegos v
                             WHERE v.id = ?
                            """;
+
         try (Connection connection = dataSource.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(SQL))
         {
@@ -100,6 +101,7 @@ public class PostgresDatabaseDao implements DatabaseDao {
         )
         {
             preparedStatement.setString(1, videojuego.id());
+            preparedStatement.setString(6, videojuego.id());
             preparedStatement.setString(2, videojuego.nombre());
             preparedStatement.setDate(3, Date.valueOf(videojuego.fecha_lanzamiento()));
             preparedStatement.setString(4, videojuego.genero());
@@ -113,6 +115,7 @@ public class PostgresDatabaseDao implements DatabaseDao {
             throw new VideojuegoException(sqlException);
 
         }
+        //da
     }
 
     @Override
@@ -150,11 +153,11 @@ public class PostgresDatabaseDao implements DatabaseDao {
              PreparedStatement preparedStatement = connection.prepareStatement(SQL, columns)
         )
         {
-            preparedStatement.setString(1, videojuego.id());
-            preparedStatement.setString(2, videojuego.nombre());
-            preparedStatement.setDate(  3, Date.valueOf(videojuego.fecha_lanzamiento()));
-            preparedStatement.setString(4, videojuego.genero());
-            preparedStatement.setString(5, videojuego.cartel());
+            //preparedStatement.setString(1, videojuego.id()); -> como se autogenera aqui ya no vale
+            preparedStatement.setString(1, videojuego.nombre());
+            preparedStatement.setDate(  2, Date.valueOf(videojuego.fecha_lanzamiento()));
+            preparedStatement.setString(3, videojuego.genero());
+            preparedStatement.setString(4, videojuego.cartel());
             preparedStatement.executeUpdate();
             try (ResultSet rs = preparedStatement.getGeneratedKeys() )
             {

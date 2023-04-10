@@ -47,6 +47,8 @@ public class VideojuegosResource {
         }
         return Response.status(Response.Status.NOT_FOUND)
                 .build();
+
+        //<<Los videojuegos que pilla desde la BD los coge bien, los q add desde postman Nanai ;S>>
     }
 
 
@@ -92,5 +94,8 @@ public class VideojuegosResource {
         return Response.created(uriNewVideojuego)
                 .entity( videojuego )
                 .build();
+    //<<<Da codigo 204 en vez de 200, pero si actualiza>>>
     }
+
+
 }
