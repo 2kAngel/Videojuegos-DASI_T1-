@@ -8,4 +8,7 @@ import java.util.Date;
 
 @Builder(setterPrefix = "with")
 @With
-public record UnidentifiedVideojuego(String nombre, LocalDate fecha_lanzamiento, String genero, String cartel) {}
+public record UnidentifiedVideojuego(String nombre,
+                                     LocalDate fecha_lanzamiento,
+                                     String genero,
+                                     String cartel) {}

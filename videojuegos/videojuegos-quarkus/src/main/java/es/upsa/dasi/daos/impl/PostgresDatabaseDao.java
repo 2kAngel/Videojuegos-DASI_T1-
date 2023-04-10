@@ -57,7 +57,7 @@ public class PostgresDatabaseDao implements DatabaseDao {
     public Optional<Videojuego> selectVideojuegoById(String id) throws VideojuegoException {
 
         final String SQL = """
-                           SELECT v.id, v.titulo, v.estreno, v.rating, v.sinopsis, v.cartel
+                           SELECT v.id, v.nombre, v.fecha_lanzamiento, v.genero, v.cartel
                              FROM videojuegos v
                             WHERE v.id = ?
                            """;
