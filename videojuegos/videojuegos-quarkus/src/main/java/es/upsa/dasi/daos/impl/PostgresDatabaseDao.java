@@ -141,8 +141,8 @@ public class PostgresDatabaseDao implements DatabaseDao {
     @Override
     public Videojuego insertVideojuego(Videojuego videojuego) throws VideojuegoException {
         final String SQL = """
-                            INSERT INTO videojuegos(id, nombre, fecha_lanzamiento, genero, cartel)
-                                           VALUES(nextval('seq_peliculas'),  ?,      ?,       ?,      ?   )
+                            INSERT INTO videojuegos(id            ,             nombre, fecha_lanzamiento, genero, cartel)
+                                   VALUES(nextval('seq_peliculas'),                 ? ,      ?           ,   ?   ,   ?   )
                            """;
         String[] columns = { "id" };
 
@@ -152,7 +152,7 @@ public class PostgresDatabaseDao implements DatabaseDao {
         {
             preparedStatement.setString(1, videojuego.id());
             preparedStatement.setString(2, videojuego.nombre());
-            preparedStatement.setDate(3, Date.valueOf(videojuego.fecha_lanzamiento()));
+            preparedStatement.setDate(  3, Date.valueOf(videojuego.fecha_lanzamiento()));
             preparedStatement.setString(4, videojuego.genero());
             preparedStatement.setString(5, videojuego.cartel());
             preparedStatement.executeUpdate();
