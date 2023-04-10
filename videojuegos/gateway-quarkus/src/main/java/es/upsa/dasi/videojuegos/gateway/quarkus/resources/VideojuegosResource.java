@@ -34,7 +34,7 @@ public class VideojuegosResource
     public Response getVideojuegos() throws VideojuegoException
     {
         return Response.ok()
-                .entity( new GenericEntity<List<Videojuego>>( service.demandVideojuegos() ) {} )
+                .entity( new GenericEntity< List<Videojuego> >( service.demandVideojuegos() ) {} )
                 .build();
     }
 

@@ -38,7 +38,7 @@ public class PostgresDatabaseDao implements DatabaseDao {
                         .withId( resultSet.getString(1) )
                         .withNombre( resultSet.getString(2) )
                         .withNacionalidad( resultSet.getString(3) )
-                        .withFecha_creacion( resultSet.getDate(4) )
+                        .withFecha_creacion(resultSet.getDate(4).toLocalDate())
                         .withFoto( resultSet.getString(5) )
                         .build()
                 );
@@ -72,7 +72,7 @@ public class PostgresDatabaseDao implements DatabaseDao {
                         .withId( resultSet.getString(1) )
                         .withNombre( resultSet.getString(2) )
                         .withNacionalidad( resultSet.getString(3) )
-                        .withFecha_creacion( resultSet.getDate(4) )
+                        .withFecha_creacion(resultSet.getDate(4).toLocalDate())
                         .withFoto( resultSet.getString(5) )
                         .build()
                 );
@@ -98,7 +98,7 @@ public class PostgresDatabaseDao implements DatabaseDao {
         {
             preparedStatement.setString(1, desarrolladora.nombre());
             preparedStatement.setString(2, desarrolladora.nacionalidad());
-            preparedStatement.setDate(3, (Date) desarrolladora.fecha_creacion());
+            preparedStatement.setDate(3, Date.valueOf(desarrolladora.fecha_creacion()));
             preparedStatement.setString(4, desarrolladora.foto());
             preparedStatement.setString(5, desarrolladora.id());
 
@@ -151,7 +151,7 @@ public class PostgresDatabaseDao implements DatabaseDao {
         {
             preparedStatement.setString(1, desarrolladora.nombre());
             preparedStatement.setString(2, desarrolladora.nacionalidad());
-            preparedStatement.setDate(3, (Date) desarrolladora.fecha_creacion());
+            preparedStatement.setDate(3, Date.valueOf(desarrolladora.fecha_creacion()));
             preparedStatement.setString(4, desarrolladora.foto());
             preparedStatement.executeUpdate();
             try (ResultSet rs = preparedStatement.getGeneratedKeys() )

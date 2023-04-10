@@ -3,6 +3,7 @@ package es.upsa.dasi.videojuegos.model;
 import lombok.Builder;
 import lombok.With;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Builder(setterPrefix = "with")
@@ -12,6 +13,6 @@ public record Plataformas(String id,
                           String id_desarrolladora,
                           String nombre,
 
-                          Date fecha_lanzamiento,
+                          LocalDate fecha_lanzamiento,
                           String foto) {
 }

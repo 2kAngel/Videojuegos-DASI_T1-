@@ -43,7 +43,7 @@ public class PostgresDatabaseDao implements DatabaseDao {
                             .withId_videojuego(resultSet.getString(2))
                             .withId_desarrolladora( resultSet.getString(3) )
                             .withNombre(resultSet.getString(4))
-                            .withFecha_lanzamiento(resultSet.getDate(5))
+                            .withFecha_lanzamiento(resultSet.getDate(5).toLocalDate())
                             .withFoto(resultSet.getString(6))
                             .build()
                     );
@@ -79,7 +79,7 @@ public class PostgresDatabaseDao implements DatabaseDao {
                         .withId_videojuego(resultSet.getString(2))
                         .withId_desarrolladora(resultSet.getString(3))
                         .withNombre( resultSet.getString(4) )
-                        .withFecha_lanzamiento( resultSet.getDate(5) )
+                        .withFecha_lanzamiento(resultSet.getDate(5).toLocalDate())
                         .withFoto(resultSet.getString(6))
                         .build()
                 );

@@ -98,14 +98,14 @@ INSERT INTO PLATAFORMAS(ID,     ID_VIDEOJUEGO, ID_DESARROLLADORA,    NOMBRE,    
 INSERT INTO PLATAFORMAS(ID,     ID_VIDEOJUEGO,  ID_DESARROLLADORA,   NOMBRE,     FECHA_LANZAMIENTO,      FOTO)
                         VALUES(nextval('seq_plataformas'), '4','A3', 'PlayStation 3', '2006-08-11', 'https://i.ebayimg.com/images/g/EtUAAOSwCBVj28ah/s-l640.jpg');
 
-INSERT INTO PLATAFORMAS(ID,     ID_VIDEOJUEGO, ID_DESARROLLADORA,    NOMBRE,     FECHA_LANZAMIENTO,      FOTO)
-                        VALUES(nextval('seq_plataformas'), '1','A1', 'Xbox 360', '2005-08-22', 'https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/41God7KwSOL._AC_.jpg');
+INSERT INTO PLATAFORMAS(ID,     ID_VIDEOJUEGO, ID_DESARROLLADORA,    NOMBRE,     FECHA_LANZAMIENTO ,      FOTO)
+                        VALUES(nextval('seq_plataformas'), '1','A1', 'Xbox 360', '2005-08-22' , 'https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/41God7KwSOL._AC_.jpg');
 
-INSERT INTO PLATAFORMAS(ID,     ID_VIDEOJUEGO, ID_DESARROLLADORA,    NOMBRE,     FECHA_LANZAMIENTO,      FOTO)
-                        VALUES(nextval('seq_plataformas'), '2','A2', 'Xbox 360', '2005-08-22', 'https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/41God7KwSOL._AC_.jpg');
+INSERT INTO PLATAFORMAS(ID,     ID_VIDEOJUEGO, ID_DESARROLLADORA,    NOMBRE,     FECHA_LANZAMIENTO ,      FOTO)
+                        VALUES(nextval('seq_plataformas'), '2','A2', 'Xbox 360', '2005-08-22' , 'https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/41God7KwSOL._AC_.jpg');
 
-INSERT INTO PLATAFORMAS(ID,     ID_VIDEOJUEGO, ID_DESARROLLADORA,    NOMBRE,     FECHA_LANZAMIENTO,      FOTO)
-                        VALUES(nextval('seq_plataformas'), '4','A4', 'Xbox 360', '2005-08-22', 'https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/41God7KwSOL._AC_.jpg');
+INSERT INTO PLATAFORMAS(ID,     ID_VIDEOJUEGO, ID_DESARROLLADORA,    NOMBRE,     FECHA_LANZAMIENTO ,      FOTO)
+                        VALUES(nextval('seq_plataformas'), '4','A4', 'Xbox 360', '2005-08-22' , 'https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/41God7KwSOL._AC_.jpg');
 
-INSERT INTO PLATAFORMAS(ID,     ID_VIDEOJUEGO, ID_DESARROLLADORA,    NOMBRE,     FECHA_LANZAMIENTO,      FOTO)
-                        VALUES(nextval('seq_plataformas'), '3','A1', 'PlayStation 4', '2013-08-15', 'https://gmedia.playstation.com/is/image/SIEPDC/ps4-product-thumbnail-01-en-14sep21?$facebook$');
+INSERT INTO PLATAFORMAS(ID,     ID_VIDEOJUEGO, ID_DESARROLLADORA,    NOMBRE,     FECHA_LANZAMIENTO ,      FOTO)
+                        VALUES(nextval('seq_plataformas'), '3','A1', 'PlayStation 4', '2013-08-15' , 'https://gmedia.playstation.com/is/image/SIEPDC/ps4-product-thumbnail-01-en-14sep21?$facebook$');
