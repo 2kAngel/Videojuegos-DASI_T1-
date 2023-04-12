@@ -3,8 +3,6 @@ package es.upsa.dasi.videojuegos.gateway.quarkus.resources;
 import es.upsa.dasi.videojuegos.dtos.FullDesarrolladora;
 import es.upsa.dasi.videojuegos.dtos.FullVideojuego;
 import es.upsa.dasi.videojuegos.dtos.UnidentifiedDesarrolladora;
-import es.upsa.dasi.videojuegos.dtos.UnidentifiedVideojuego;
-import es.upsa.dasi.videojuegos.entity.Plataforma;
 import es.upsa.dasi.videojuegos.exceptions.VideojuegoException;
 import es.upsa.dasi.videojuegos.gateway.quarkus.services.Service;
 import es.upsa.dasi.videojuegos.mappers.Mappers;
@@ -17,12 +15,10 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
-@Path("/games")
-public class VideojuegosResource
+@Path("/developers")
+public class DesarrolladorasResource
 {
-
     @Inject
     Service service;
 
@@ -31,25 +27,26 @@ public class VideojuegosResource
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getVideojuegos() throws VideojuegoException
+    public Response getDesarrolladoras() throws VideojuegoException
     {
         return Response.ok()
-                .entity( new GenericEntity< List<Videojuego> >( service.demandVideojuegos() ) {} )
+                .entity( new GenericEntity<List<Desarrolladora>>( service.demandDesarrolladoras() ) {} )
                 .build();
     }
+
 
     //----------------------------------------------------
 
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getVideojuegoById(@PathParam("id") String id) throws VideojuegoException
+    public Response getDesarrolladoraById(@PathParam("id") String id) throws VideojuegoException
     {
-        Videojuego videojuego = service.demandVideojuegoById(id);
+        Desarrolladora desarrolladora = service.demandDesarrolladoraById(id);
         Optional<Plataformas> optPlataformas = service.demandPlataformaVideojuego(id);
 
         Mappers mappers = new Mappers();
-        FullVideojuego fullVideojuego = mappers.toFullVideojuego(videojuego);
+        FullDesarrolladora fullDesarrolladora  = mappers.toFullDesarrolladora(desarrolladora);
 
         if(optPlataformas.isPresent()){
             Plataformas plataformas = optPlataformas.get();
@@ -58,40 +55,39 @@ public class VideojuegosResource
             //este if sin meter nada realmente no tiene mucho sentido
 
         }
-
         return Response.ok()
-                .entity(fullVideojuego)
+                .entity(fullDesarrolladora)
                 .build();
 
     }
+
     //----------------------------------------------------
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response postVideojuego(UnidentifiedVideojuego unidentifiedVideojuego) throws VideojuegoException
+    public Response postDesarrolladora(UnidentifiedDesarrolladora unidentifiedDesarrolladora) throws VideojuegoException
     {
         Mappers mappers = new Mappers();
-        Videojuego videojuego = service.demandInsertVideojuego( mappers.toVideojuego(unidentifiedVideojuego) );
+        Desarrolladora desarrolladora = service.demandInsertDesarrolladora( mappers.toDesarrolladora(unidentifiedDesarrolladora) );
 
         return Response.created( uriInfo.getBaseUriBuilder()
-                        .path("/games/{id}")
-                        .build( videojuego.id() )
+                        .path("/developers/{id}")
+                        .build( desarrolladora.id() )
                 )
-                .entity( videojuego )
+                .entity( desarrolladora )
                 .build();
     }
+
     //----------------------------------------------------
 
-
     @PUT
-    @Path("{id}")
+    @Path("/developers/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response putVideojuegoById(@PathParam("id") String id, UnidentifiedVideojuego unidentifiedVideojuego) throws VideojuegoException
-    {
+    public Response putDesarrolladoraById(@PathParam("id") String id, UnidentifiedDesarrolladora unidentifiedDesarrolladora) throws VideojuegoException {
         Mappers mappers = new Mappers();
-        Videojuego videojuego = service.demandUpdateVideojuego( mappers.toVideojuego(unidentifiedVideojuego).withId(id) );
+        Desarrolladora desarrolladora = service.demandInsertDesarrolladora(mappers.toDesarrolladora(unidentifiedDesarrolladora).withId(id));
 
         return Response.noContent()
                 .build();
@@ -100,18 +96,13 @@ public class VideojuegosResource
     //----------------------------------------------------
 
     @DELETE
-    @Path("{id}")
-    public Response deleteVideojuegoById(@PathParam("id") String id) throws VideojuegoException
+    @Path("/developers/{id}")
+    public Response deleteDesarrolladoraById(@PathParam("id") String id) throws VideojuegoException
     {
-        service.demandDeleteVideojuego( id );
+        service.demandDeleteDesarrolladora( id );
 
         return Response.noContent()
                 .build();
     }
-
-    //----------------------------------------------------
-    //----------------------------------------------------
-
-
 
 }

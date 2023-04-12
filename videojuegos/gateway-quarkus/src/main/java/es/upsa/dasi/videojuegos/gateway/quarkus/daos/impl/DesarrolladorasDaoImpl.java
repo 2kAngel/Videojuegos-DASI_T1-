@@ -41,11 +41,11 @@ public class DesarrolladorasDaoImpl implements DesarrolladorasDao
     @Override
     public Desarrolladora requestDesarrolladoraById(String id) throws VideojuegoException {
         Response response = ClientBuilder.newBuilder()
-                .build()
-                .target("http://localhost:8082/developers/{id}")
-                .resolveTemplate("id", id)
-                .request(MediaType.APPLICATION_JSON_TYPE)
-                .get();
+                                         .build()
+                                         .target("http://localhost:8082/developers/{id}")
+                                         .resolveTemplate("id", id)
+                                         .request(MediaType.APPLICATION_JSON_TYPE)
+                                         .get();
 
         switch ( response.getStatus() )
         {

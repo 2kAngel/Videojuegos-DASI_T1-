@@ -1,5 +1,6 @@
 package es.upsa.dasi.videojuegos.mappers;
 
+import es.upsa.dasi.videojuegos.dtos.FullDesarrolladora;
 import es.upsa.dasi.videojuegos.dtos.FullVideojuego;
 import es.upsa.dasi.videojuegos.dtos.UnidentifiedDesarrolladora;
 import es.upsa.dasi.videojuegos.dtos.UnidentifiedVideojuego;
@@ -71,5 +72,17 @@ public class Mappers {
                 .withCartel(videojuego.cartel() );
 
          return fullVideojuegoBuilder.build();
+    }
+
+    public FullDesarrolladora toFullDesarrolladora(Desarrolladora desarrolladora)
+    {
+        FullDesarrolladora.FullDesarrolladoraBuilder fullDesarrolladoraBuilder = FullDesarrolladora.builder()
+                .withId(desarrolladora.id())
+                .withNombre(desarrolladora.nombre())
+                .withNacionalidad(desarrolladora.nacionalidad())
+                .withFecha_creacion(desarrolladora.fecha_creacion())
+                .withFoto(desarrolladora.foto());
+
+        return FullDesarrolladora.builder().build();
     }
 }

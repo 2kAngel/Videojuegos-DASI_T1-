@@ -18,11 +18,11 @@ public class PlataformasDaoImpl implements PlataformasDao
     @Override
     public Optional<Plataformas> requestPlataformaVideojuego(String id) throws VideojuegoException {
         Response response = ClientBuilder.newBuilder()
-                .build()
-                .target("http://localhost:8083/games/{id}/plataformas")
-                .resolveTemplate("id", id)
-                .request(MediaType.APPLICATION_JSON_TYPE)
-                .get();
+                                    .build()
+                                    .target("http://localhost:8083/games/{id}/plataformas")
+                                    .resolveTemplate("id", id)
+                                    .request(MediaType.APPLICATION_JSON_TYPE)
+                                    .get();
 
         switch ( response.getStatus() )
         {
