@@ -19,7 +19,7 @@ public class PostgresDatabaseDao implements DatabaseDao {
     DataSource dataSource;
 
     @Override
-    public Plataformas selectPlataformasPelicula(String id) throws VideojuegoException {
+    public Plataformas selectPlataformasVideojuegos(String id) throws VideojuegoException {
 
         List<Plataformas> plataformas = new ArrayList<>();
 

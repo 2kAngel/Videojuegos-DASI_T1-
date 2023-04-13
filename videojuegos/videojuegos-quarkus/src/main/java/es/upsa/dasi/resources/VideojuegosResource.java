@@ -65,8 +65,7 @@ public class VideojuegosResource {
         service.updateVideojuego(videojuego);
         return Response.noContent()
                 .build();
-//        return Response.status(Response.Status.NO_CONTENT)
-//                       .build();
+
     }
 
 
@@ -94,7 +93,7 @@ public class VideojuegosResource {
         return Response.created(uriNewVideojuego)
                 .entity( videojuego )
                 .build();
-    //<<<Da codigo 204 en vez de 200, pero si actualiza>>>
+
     }
 
 

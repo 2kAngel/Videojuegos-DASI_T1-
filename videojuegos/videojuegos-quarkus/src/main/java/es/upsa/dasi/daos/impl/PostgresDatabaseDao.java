@@ -144,8 +144,8 @@ public class PostgresDatabaseDao implements DatabaseDao {
     @Override
     public Videojuego insertVideojuego(Videojuego videojuego) throws VideojuegoException {
         final String SQL = """
-                            INSERT INTO videojuegos(id            ,             nombre, fecha_lanzamiento, genero, cartel)
-                                   VALUES(nextval('seq_peliculas'),                 ? ,      ?           ,   ?   ,   ?   )
+                            INSERT INTO videojuegos(id, nombre, fecha_lanzamiento, genero, cartel)
+                                   VALUES(nextval('seq_videojuegos'), ?, ?, ?, ?)
                            """;
         String[] columns = { "id" };
 

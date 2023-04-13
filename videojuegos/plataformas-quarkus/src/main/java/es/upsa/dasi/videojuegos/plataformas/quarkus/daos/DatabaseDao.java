@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface DatabaseDao {
 
-    Plataformas selectPlataformasPelicula(String id) throws VideojuegoException;
+    Plataformas selectPlataformasVideojuegos(String id) throws VideojuegoException;
 
     public List<Plataformas> selectPlataformas() throws VideojuegoException;
 

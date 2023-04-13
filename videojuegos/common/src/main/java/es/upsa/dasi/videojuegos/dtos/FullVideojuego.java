@@ -12,6 +12,5 @@ public record FullVideojuego(String id,
                              LocalDate fecha_lanzamiento,
                              String genero,
                              String cartel
-                                //si quieres add reparto del videojuego aqui <-->
                             ) {
 }

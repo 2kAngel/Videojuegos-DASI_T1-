@@ -17,7 +17,7 @@ public class RepositoryImpl implements Repository {
     @Override
     public Plataformas findPlataformasVideojuego(String id) throws VideojuegoException {
 
-        return dao.selectPlataformasPelicula(id);
+        return dao.selectPlataformasVideojuegos(id);
     }
 
     @Override

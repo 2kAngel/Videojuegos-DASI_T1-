@@ -88,7 +88,7 @@ public class PostgresDatabaseDao implements DatabaseDao {
 
         final String SQL = """
                            UPDATE desarrolladoras
-                              SET nombre = ?, nacionalidad = ?, fecha_creacion = ?, foto = ?
+                              SET id = ?, nombre = ?, nacionalidad = ?, fecha_creacion = ?, foto = ?
                             WHERE id = ?   
                            """;
 
@@ -96,11 +96,12 @@ public class PostgresDatabaseDao implements DatabaseDao {
              PreparedStatement preparedStatement = connection.prepareStatement(SQL)
         )
         {
-            preparedStatement.setString(1, desarrolladora.nombre());
-            preparedStatement.setString(2, desarrolladora.nacionalidad());
-            preparedStatement.setDate(3, Date.valueOf(desarrolladora.fecha_creacion()));
-            preparedStatement.setString(4, desarrolladora.foto());
-            preparedStatement.setString(5, desarrolladora.id());
+            preparedStatement.setString(1, desarrolladora.id());
+            preparedStatement.setString(6, desarrolladora.id());
+            preparedStatement.setString(2, desarrolladora.nombre());
+            preparedStatement.setString(3, desarrolladora.nacionalidad());
+            preparedStatement.setDate(4, Date.valueOf(desarrolladora.fecha_creacion()));
+            preparedStatement.setString(5, desarrolladora.foto());
 
             int count = preparedStatement.executeUpdate();
             if ( count == 0 ) throw new DesarrolladoraNotFoundException(desarrolladora.id());

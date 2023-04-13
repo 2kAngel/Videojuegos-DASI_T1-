@@ -7,7 +7,7 @@ DROP SEQUENCE seq_videojuegos;
 DROP SEQUENCE seq_desarrolladoras;
 DROP SEQUENCE seq_plataformas;
 
-
+l
 
 CREATE TABLE VIDEOJUEGOS
 (

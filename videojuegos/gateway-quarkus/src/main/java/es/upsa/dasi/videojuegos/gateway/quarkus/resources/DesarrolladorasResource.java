@@ -43,18 +43,12 @@ public class DesarrolladorasResource
     public Response getDesarrolladoraById(@PathParam("id") String id) throws VideojuegoException
     {
         Desarrolladora desarrolladora = service.demandDesarrolladoraById(id);
-        Optional<Plataformas> optPlataformas = service.demandPlataformaVideojuego(id);
 
         Mappers mappers = new Mappers();
         FullDesarrolladora fullDesarrolladora  = mappers.toFullDesarrolladora(desarrolladora);
 
-        if(optPlataformas.isPresent()){
-            Plataformas plataformas = optPlataformas.get();
 
-            //<---> Aqui irían los list que puedes add a los videojuegos (reparto, programadores, ...)
-            //este if sin meter nada realmente no tiene mucho sentido
 
-        }
         return Response.ok()
                 .entity(fullDesarrolladora)
                 .build();
@@ -82,7 +76,7 @@ public class DesarrolladorasResource
     //----------------------------------------------------
 
     @PUT
-    @Path("/developers/{id}")
+    @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response putDesarrolladoraById(@PathParam("id") String id, UnidentifiedDesarrolladora unidentifiedDesarrolladora) throws VideojuegoException {
@@ -96,7 +90,7 @@ public class DesarrolladorasResource
     //----------------------------------------------------
 
     @DELETE
-    @Path("/developers/{id}")
+    @Path("{id}")
     public Response deleteDesarrolladoraById(@PathParam("id") String id) throws VideojuegoException
     {
         service.demandDeleteDesarrolladora( id );
