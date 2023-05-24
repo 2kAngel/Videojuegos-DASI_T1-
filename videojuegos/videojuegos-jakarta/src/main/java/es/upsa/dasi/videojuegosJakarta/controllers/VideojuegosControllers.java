@@ -13,6 +13,7 @@ import jakarta.mvc.Controller;
 import jakarta.mvc.Models;
 import jakarta.mvc.MvcContext;
 import jakarta.mvc.UriRef;
+import jakarta.mvc.binding.BindingResult;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -21,8 +22,11 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RequestScoped
-@Path("games")
+@Path("/{languaje}/games")
 public class VideojuegosControllers {
+
+    @PathParam("languaje")
+    String languaje;
 
     @Inject
     Service service;
@@ -35,6 +39,9 @@ public class VideojuegosControllers {
 
     @Inject
     MvcContext mvc;
+
+    @Inject
+    BindingResult bindingResult;
 
     @GET
     @UriRef("getVideojuegos")
