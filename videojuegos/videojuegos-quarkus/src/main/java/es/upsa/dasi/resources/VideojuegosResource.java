@@ -47,8 +47,6 @@ public class VideojuegosResource {
         }
         return Response.status(Response.Status.NOT_FOUND)
                 .build();
-
-        //<<Los videojuegos que pilla desde la BD los coge bien, los q add desde postman Nanai ;S>>
     }
 
 

@@ -44,7 +44,7 @@ public class DesarrolladoraResource {
 
     @PUT
     @Path("{id}")
-    public Response updatePersonById(@PathParam("id") String id, UnidentifiedDesarrolladora unidentifiedDesarrolladora) throws VideojuegoException
+    public Response updateDesarrolladoraById(@PathParam("id") String id, UnidentifiedDesarrolladora unidentifiedDesarrolladora) throws VideojuegoException
     {
         Mappers mappers = new Mappers();
         service.updateDesarrolladoraById( mappers.toDesarrolladora(unidentifiedDesarrolladora).withId(id) );
@@ -54,7 +54,7 @@ public class DesarrolladoraResource {
 
     @DELETE
     @Path("{id}")
-    public Response deletePersonById(@PathParam("id") String id) throws VideojuegoException
+    public Response deleteDesarrolladoraById(@PathParam("id") String id) throws VideojuegoException
     {
         service.deleteDesarrolladoraById(id);
         return Response.noContent()
@@ -62,15 +62,15 @@ public class DesarrolladoraResource {
     }
 
     @POST
-    public Response insertPerson(UnidentifiedDesarrolladora unidentifiedDesarrolladora) throws VideojuegoException
+    public Response insertDesarrolladora(UnidentifiedDesarrolladora unidentifiedDesarrolladora) throws VideojuegoException
     {
         Mappers mappers = new Mappers();
-        Desarrolladora newPerson = service.createDesarrolladora( mappers.toDesarrolladora(unidentifiedDesarrolladora) );
-        URI newPersonUri = uriInfo.getBaseUriBuilder()
-                .path("/people/{id}")
-                .build( newPerson.id() );
-        return Response.created(newPersonUri)
-                .entity(newPerson)
+        Desarrolladora newDesarrolladora = service.createDesarrolladora( mappers.toDesarrolladora(unidentifiedDesarrolladora) );
+        URI newDesarrolladoraUri = uriInfo.getBaseUriBuilder()
+                .path("/developers/{id}")
+                .build( newDesarrolladora.id() );
+        return Response.created(newDesarrolladoraUri)
+                .entity(newDesarrolladora)
                 .build();
     }
 }

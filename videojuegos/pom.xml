@@ -14,6 +14,7 @@
         <module>desarrolladoras-quarkus</module>
         <module>plataformas-quarkus</module>
         <module>gateway-quarkus</module>
+        <module>videojuegos-jakarta</module>
         <module>common-quarkus</module>
         <module>common</module>
     </modules>
