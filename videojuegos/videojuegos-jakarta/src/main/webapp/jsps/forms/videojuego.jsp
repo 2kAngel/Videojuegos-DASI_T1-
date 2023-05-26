@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
-  User: rberjon
-  Date: 24/4/23
-  Time: 12:17
+  User: administrador
+  Date: 25/5/23
+  Time: 12:30
   To change this template use File | Settings | File Templates.
 --%>
 
@@ -38,7 +38,7 @@
     </c:when>
 
     <c:otherwise>
-        <fmt:message bundle="${strings}" key="title.update.videojuego" var="title"/>
+        <fmt:message bundle="${strings}" key="title.delete.videojuego" var="title"/>
         <c:set var="actionURL"    value="${mvc.uri('deleteVideojuegoById', {'id': videojuego.id, 'language': mvc.locale.language})}"/>
         <c:set var="actionMETHOD" value="DELETE"/>
         <fmt:message key="label.submit.delete.videojuego" bundle="${strings}" var="actionSUBMIT" />
@@ -53,34 +53,22 @@
 <body>
 <h1>${title}</h1>
 
-<%--       <c:if test="${not empty errors}">--%>
-<%--           <ul>--%>
-<%--               <c:forEach var="errorMessage" items="${errors}">--%>
-<%--                   <li>${errorMessage}</li>--%>
-<%--               </c:forEach>--%>
-<%--           </ul>--%>
-<%--       </c:if>--%>
-
 
 <form action="${actionURL}" method="POST" enctype="application/x-www-form-urlencoded">
     <input type="hidden" name="_method" value="${actionMETHOD}"/>
 
-    <%-- no se si la portada y acciones debo ponerlas --%>
-    <label for="inputPortada"> <fmt:message bundle="${strings}" key="label.portada"/> </label>
-    <input id="inputPortada" type="text" name="portada" value="${videojuego.portada}"  ${actionDISABLED} />   <span style="color: red">&nbsp;&nbsp;${errors.portada}</span>
+    <label for="inputCartel"> <fmt:message bundle="${strings}" key="label.cartel"/> </label>
+    <input id="inputCartel" type="text" name="cartel" value="${videojuego.cartel}"  ${actionDISABLED} />   <span style="color: red">&nbsp;&nbsp;${errors.cartel}</span>
     <br/>
     <label for="inputNombre"> <fmt:message bundle="${strings}" key="label.nombre"/> </label>
-    <input id="inputNombre" type="text" name="director" value="${videojuego.nombre}" ${actionDISABLED}/> <span style="color: red">&nbsp;&nbsp;${errors.nombre}</span>
+    <input id="inputNombre" type="text" name="nombre" value="${videojuego.nombre}" ${actionDISABLED}/> <span style="color: red">&nbsp;&nbsp;${errors.nombre}</span>
     <br/>
     <label for="inputFecha"> <fmt:message bundle="${strings}" key="label.fecha"/> </label>
-    <input id="inputFecha" type="date" name="fecha" value="${videojuego.fecha}" ${actionDISABLED}/> <span style="color: red">&nbsp;&nbsp;${errors.fecha}</span>
+    <input id="inputFecha" type="date" name="fecha" value="${videojuego.fecha_lanzamiento}" ${actionDISABLED}/> <span style="color: red">&nbsp;&nbsp;${errors.fecha}</span>
     <br/>
     <label for="inputGenero"> <fmt:message bundle="${strings}" key="label.genero"/> </label>
     <input id="inputGenero" type="text" name="genero" value="${videojuego.genero}" ${actionDISABLED}/> <span style="color: red">&nbsp;&nbsp;${errors.genero}</span>
     <br/>
-    <br/>
-    <label for="inputAcciones"> <fmt:message bundle="${strings}" key="title.thead.actions"/> </label>
-    <input id="inputAcciones" type="text" name="acciones" value="${videojuego.acciones}" ${actionDISABLED}/> <span style="color: red">&nbsp;&nbsp;${errors.acciones}</span>
 
 
     <c:choose>

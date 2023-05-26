@@ -86,7 +86,7 @@ public class VideojuegosResource {
         Videojuego videojuego = service.insertVideojuego( mappers.toVideojuego(unidentifiedVideojuego) );
         URI uriNewVideojuego = uriInfo.getBaseUriBuilder()
                 .path("/games/{id}")
-                .build(videojuego.id());
+                .build(videojuego.getId());
 
         return Response.created(uriNewVideojuego)
                 .entity( videojuego )

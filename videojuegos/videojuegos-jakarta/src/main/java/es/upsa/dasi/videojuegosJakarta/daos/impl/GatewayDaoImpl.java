@@ -86,14 +86,14 @@ public class GatewayDaoImpl implements Gatewaydao {
         Response response = ClientBuilder.newBuilder()
                 .build()
                 .target("http://localhost:8084/games/{id}")
-                .resolveTemplate("id", videojuego.id())
+                .resolveTemplate("id", videojuego.getId())
                 .request(MediaType.APPLICATION_JSON_TYPE)
                 .put( Entity.json(mappers.toUnidentifiedVideojuego(videojuego)) );
         switch ( response.getStatus() )
         {
             case 204: return videojuego;
 
-            case 404: throw new VideojuegoNotFoundException( videojuego.id() );
+            case 404: throw new VideojuegoNotFoundException( videojuego.getId() );
 
             default: ErrorMessage errorMessage = response.readEntity( ErrorMessage.class );
                 throw new VideojuegoException( errorMessage.message() );

@@ -76,7 +76,7 @@ public class VideojuegosResource
 
         return Response.created( uriInfo.getBaseUriBuilder()
                         .path("/games/{id}")
-                        .build( videojuego.id() )
+                        .build( videojuego.getId() )
                 )
                 .entity( videojuego )
                 .build();

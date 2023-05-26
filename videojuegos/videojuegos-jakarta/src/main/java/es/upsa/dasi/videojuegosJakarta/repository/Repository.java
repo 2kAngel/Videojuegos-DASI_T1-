@@ -12,5 +12,5 @@ public interface Repository {
     public FullVideojuego requestVideojuegoById(String id) throws VideojuegoException;
     public Videojuego requestInsertVideojuego(Videojuego videojuego) throws VideojuegoException;
     public Videojuego requestUpdateVideojuego(Videojuego videojuego) throws VideojuegoException;
-    public void requestDeleteVideojuego(String id) throws VideojuegoException;
+    public void requestDeleteVideojuegoById(String id) throws VideojuegoException;
 }

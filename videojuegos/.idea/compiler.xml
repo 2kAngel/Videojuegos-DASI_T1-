@@ -19,6 +19,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="code-with-quarkus" target="17" />
+      <module name="videojuegos-jakartaee" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

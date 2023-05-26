@@ -25,10 +25,10 @@ public class Mappers {
     public UnidentifiedVideojuego toUnidentifiedVideojuego(Videojuego videojuego)
     {
         return UnidentifiedVideojuego.builder()
-                .withNombre(videojuego.nombre() )
-                .withFecha_lanzamiento(videojuego.fecha_lanzamiento() )
-                .withGenero(videojuego.genero() )
-                .withCartel(videojuego.cartel() )
+                .withNombre(videojuego.getNombre() )
+                .withFecha_lanzamiento(videojuego.getFecha_lanzamiento() )
+                .withGenero(videojuego.getGenero() )
+                .withCartel(videojuego.getCartel() )
                 .build();
     }
 
@@ -65,11 +65,11 @@ public class Mappers {
     public FullVideojuego toFullVideojuego(Videojuego videojuego)
     {
          FullVideojuego.FullVideojuegoBuilder fullVideojuegoBuilder = FullVideojuego.builder()
-                .withId(videojuego.id())
-                .withNombre(videojuego.nombre() )
-                .withFecha_lanzamiento(videojuego.fecha_lanzamiento() )
-                .withGenero(videojuego.genero() )
-                .withCartel(videojuego.cartel() );
+                .withId(videojuego.getId())
+                .withNombre(videojuego.getNombre() )
+                .withFecha_lanzamiento(videojuego.getFecha_lanzamiento() )
+                .withGenero(videojuego.getGenero() )
+                .withCartel(videojuego.getCartel() );
 
          return fullVideojuegoBuilder.build();
     }

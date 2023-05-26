@@ -8,22 +8,23 @@ import es.upsa.dasi.videojuegosJakarta.repository.Repository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @ApplicationScoped
 public class RepositoryImpl implements Repository {
+
 
     @Inject
     Gatewaydao gatewayDao;
     @Override
     public List<Videojuego> requestVideojuegos() throws VideojuegoException {
-
         return gatewayDao.requestVideojuegos();
     }
 
     @Override
     public FullVideojuego requestVideojuegoById(String id) throws VideojuegoException {
-
         return gatewayDao.requestVideojuegoById(id);
     }
 
@@ -40,8 +41,7 @@ public class RepositoryImpl implements Repository {
     }
 
     @Override
-    public void requestDeleteVideojuego(String id) throws VideojuegoException {
-
+    public void requestDeleteVideojuegoById(String id) throws VideojuegoException {
         gatewayDao.requestDeleteVideojuego(id);
     }
 }

@@ -8,7 +8,10 @@ import es.upsa.dasi.videojuegosJakarta.services.Service;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @ApplicationScoped
 public class ServiceImpl implements Service {
@@ -43,6 +46,6 @@ public class ServiceImpl implements Service {
     @Override
     public void requestDeleteVideojuego(String id) throws VideojuegoException {
 
-        repository.requestDeleteVideojuego(id);
+        repository.requestDeleteVideojuegoById(id);
     }
 }

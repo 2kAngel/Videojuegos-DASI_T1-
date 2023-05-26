@@ -100,15 +100,15 @@ public class PostgresDatabaseDao implements DatabaseDao {
              PreparedStatement preparedStatement = connection.prepareStatement(SQL)
         )
         {
-            preparedStatement.setString(1, videojuego.id());
-            preparedStatement.setString(6, videojuego.id());
-            preparedStatement.setString(2, videojuego.nombre());
-            preparedStatement.setDate(3, Date.valueOf(videojuego.fecha_lanzamiento()));
-            preparedStatement.setString(4, videojuego.genero());
-            preparedStatement.setString(5, videojuego.cartel());
+            preparedStatement.setString(1, videojuego.getId());
+            preparedStatement.setString(6, videojuego.getId());
+            preparedStatement.setString(2, videojuego.getNombre());
+            preparedStatement.setDate(3, Date.valueOf(videojuego.getFecha_lanzamiento()));
+            preparedStatement.setString(4, videojuego.getGenero());
+            preparedStatement.setString(5, videojuego.getCartel());
 
             int count = preparedStatement.executeUpdate();
-            if ( count == 0 ) throw new VideojuegoNotFoundException(videojuego.id());
+            if ( count == 0 ) throw new VideojuegoNotFoundException(videojuego.getId());
 
         } catch (SQLException sqlException)
         {
@@ -154,10 +154,10 @@ public class PostgresDatabaseDao implements DatabaseDao {
         )
         {
             //preparedStatement.setString(1, videojuego.id()); -> como se autogenera aqui ya no vale
-            preparedStatement.setString(1, videojuego.nombre());
-            preparedStatement.setDate(  2, Date.valueOf(videojuego.fecha_lanzamiento()));
-            preparedStatement.setString(3, videojuego.genero());
-            preparedStatement.setString(4, videojuego.cartel());
+            preparedStatement.setString(1, videojuego.getNombre());
+            preparedStatement.setDate(  2, Date.valueOf(videojuego.getFecha_lanzamiento()));
+            preparedStatement.setString(3, videojuego.getGenero());
+            preparedStatement.setString(4, videojuego.getCartel());
             preparedStatement.executeUpdate();
             try (ResultSet rs = preparedStatement.getGeneratedKeys() )
             {
