@@ -11,11 +11,11 @@ import java.util.Map;
 @ApplicationPath("/")
 public class WebApplication extends Application
 {
-    @Override
+    /*@Override
     public Map<String, Object> getProperties()
     {
         Map<String, Object> properties = new HashMap<>();
         properties.put(FormMethodOverwriter.FORM_METHOD_OVERWRITE, FormMethodOverwriter.Options.ENABLED);
         return properties;
-    }
+    }*/
 }

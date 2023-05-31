@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class LocalDateConstraintMinValidator implements ConstraintValidator<LocalDateMin, LocalDate> {
+
     private LocalDate localDateMin;
     private boolean inclusive;
 

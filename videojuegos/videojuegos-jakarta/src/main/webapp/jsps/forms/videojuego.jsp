@@ -23,7 +23,7 @@
 
     <c:when test="${action == 'INSERT'}">
         <fmt:message bundle="${strings}" key="title.insert.videojuego" var="title"/>
-        <c:set var="actionURL" value="${mvc.uri('postVideojuego', {'language': mvc.locale.language})}"/>
+        <c:set var="actionURL" value="${mvc.uri('postVideojuego', {'id': videojuego.id, 'language': mvc.locale.language})}"/>
         <c:set var="actionMETHOD" value="POST"/>
         <fmt:message key="label.action.insert.videojuego" bundle="${strings}" var="actionSUBMIT" />
         <c:set var="actionDISABLED" value=""/>
@@ -53,34 +53,53 @@
 <body>
 <h1>${title}</h1>
 
-
-<form action="${actionURL}" method="POST" enctype="application/x-www-form-urlencoded">
-    <input type="hidden" name="_method" value="${actionMETHOD}"/>
-
-    <label for="inputCartel"> <fmt:message bundle="${strings}" key="label.cartel"/> </label>
-    <input id="inputCartel" type="text" name="cartel" value="${videojuego.cartel}"  ${actionDISABLED} />   <span style="color: red">&nbsp;&nbsp;${errors.cartel}</span>
-    <br/>
-    <label for="inputNombre"> <fmt:message bundle="${strings}" key="label.nombre"/> </label>
-    <input id="inputNombre" type="text" name="nombre" value="${videojuego.nombre}" ${actionDISABLED}/> <span style="color: red">&nbsp;&nbsp;${errors.nombre}</span>
-    <br/>
-    <label for="inputFecha"> <fmt:message bundle="${strings}" key="label.fecha"/> </label>
-    <input id="inputFecha" type="date" name="fecha" value="${videojuego.fecha_lanzamiento}" ${actionDISABLED}/> <span style="color: red">&nbsp;&nbsp;${errors.fecha}</span>
-    <br/>
-    <label for="inputGenero"> <fmt:message bundle="${strings}" key="label.genero"/> </label>
-    <input id="inputGenero" type="text" name="genero" value="${videojuego.genero}" ${actionDISABLED}/> <span style="color: red">&nbsp;&nbsp;${errors.genero}</span>
-    <br/>
-
-
-    <c:choose>
-        <c:when test="${action == 'SELECT'}">
+        <form action="${actionURL}" method="POST" enctype="application/x-www-form-urlencoded">
+            <input type="hidden" name="_method" value="${actionMETHOD}"/>
+            <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6">
+            <c:choose>
+                <c:when test="${action != 'INSERT' && action != 'UPDATE'}">
+                    <table class="table table-striped">
+                        <tbody class="table-group-divider">
+                         <tr class="align-middle">
+                             <td><label for="inputCartel"> <fmt:message bundle="${strings}" key="label.cartel"/> </label></td>
+                             <td><img id="inputCartel" src="${videojuego.cartel}" width="200" height="250" class="img-fluid" alt="Imagen de ${videojuego.nombre}">   <span style="color: red">&nbsp;&nbsp;${errors.cartel}</span></td>
+                         </tr>
+                        </tbody>
+                    </table>
+                </c:when>
+                <c:otherwise>
+                    <label for="inputCartel2"> <fmt:message bundle="${strings}" key="label.cartel"/> </label>
+                    <input id="inputCartel2" type="text" name="cartel" value="${videojuego.cartel}"  ${actionDISABLED} />   <span style="color: red"> ${errors.cartel}</span>
+                </c:otherwise>
+            </c:choose>
+            </div>
             <br/>
+            <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6">
+                <label for="inputNombre"> <fmt:message bundle="${strings}" key="label.nombre"/> </label>
+                <input id="inputNombre" type="text" name="nombre" value="${videojuego.nombre}" ${actionDISABLED}/> <span style="color: red">&nbsp;&nbsp;${errors.nombre}</span>
+            </div>
             <br/>
-            <a href="${actionSUBMIT}"><fmt:message key="label.action.back.select.videojuegos" bundle="${strings}"/> </a>
-        </c:when>
-        <c:otherwise>
-            <input type="submit" value="${actionSUBMIT}"/>
-        </c:otherwise>
-    </c:choose>
-</form>
+            <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6">
+                <label for="inputFecha"> <fmt:message bundle="${strings}" key="label.fecha"/> </label>
+                <input id="inputFecha" type="date" name="fecha" value="${videojuego.fecha_lanzamiento}" ${actionDISABLED}/> <span style="color: red">&nbsp;&nbsp;${errors.fecha}</span>
+            </div>
+            <br/>
+            <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6">
+                <label for="inputGenero"> <fmt:message bundle="${strings}" key="label.genero"/> </label>
+                <input id="inputGenero" type="text" name="genero" value="${videojuego.genero}" ${actionDISABLED}/> <span style="color: red">&nbsp;&nbsp;${errors.genero}</span>
+            </div>
+            <br/>
+
+            <c:choose>
+                <c:when test="${action == 'SELECT'}">
+                    <br/>
+                    <br/>
+                    <a href="${actionSUBMIT}"><fmt:message key="label.action.back.select.videojuegos" bundle="${strings}"/> </a>
+                </c:when>
+                <c:otherwise>
+                    <input type="submit" value="${actionSUBMIT}"/>
+                </c:otherwise>
+            </c:choose>
+        </form>
 </body>
 </html>

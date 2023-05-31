@@ -5,9 +5,12 @@ import es.upsa.dasi.videojuegos.exceptions.VideojuegoException;
 import es.upsa.dasi.videojuegos.model.Videojuego;
 import es.upsa.dasi.videojuegosJakarta.repository.Repository;
 import es.upsa.dasi.videojuegosJakarta.services.Service;
+import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

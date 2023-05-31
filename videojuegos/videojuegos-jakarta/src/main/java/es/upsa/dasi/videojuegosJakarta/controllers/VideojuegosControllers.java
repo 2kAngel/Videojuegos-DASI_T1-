@@ -110,7 +110,7 @@ public class VideojuegosControllers {
     public Response putVideojuegoById(@PathParam("id") String id, @BeanParam @Valid VideojuegoForm form) throws VideojuegoException {
 
         Videojuego videojuego = Videojuego.builder()
-                //.withId(form.getId())
+                .withId(id)
                 .withNombre(form.getNombre() )
                 .withFecha_lanzamiento(form.getFecha_lanzamiento())
                 .withGenero(form.getGenero() )

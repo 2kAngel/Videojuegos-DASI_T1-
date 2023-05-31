@@ -15,12 +15,12 @@ import lombok.Setter;
 import java.time.LocalDate;
 
 @Data
-@NoArgsConstructor
-@Getter
-@Setter
 public class VideojuegoForm {
 
-
+    @FormParam("id")
+    @MvcBinding
+    @NotNull
+    private String id;
 
     @FormParam("nombre")
     @MvcBinding
@@ -46,6 +46,5 @@ public class VideojuegoForm {
     @MvcBinding
     @NotNull
     @NotBlank
-    @Pattern(regexp = "(http|https)://[\\w-]+(\\.[\\w-]+)+([\\w.,@?^=%&:/~+#-]*[\\w@?^=%&/~+#-])?", message = "{error.url}")
     private String cartel;
 }

@@ -26,7 +26,7 @@ public class FormsControllers
 
 
     @GET
-    @Path("/insert/game")
+    @Path("/insert/games")
     @UriRef("getFormInsertVideojuego")
     @Controller
     @View("/jsps/forms/videojuego.jsp")
@@ -36,20 +36,16 @@ public class FormsControllers
         models.put("action", Action.INSERT);
     }
 
-
-
     @GET
-    @Path("/update/game/{id}")
+    @Path("/update/games/{id}")
     @UriRef("getFormUpdateVideojuegoById")
     @Controller
     @View("/jsps/forms/videojuego.jsp")
     public void getFormUpdateVideojuegoById(@PathParam("id") String id) throws VideojuegoException
     {
-
         FullVideojuego videojuego = service.requestVideojuegoById(id);
-        models.put("action", Action.UPDATE);
         models.put("videojuego", videojuego);
-
+        models.put("action", Action.UPDATE);
     }
 
     @GET
@@ -59,8 +55,6 @@ public class FormsControllers
     @View("/jsps/forms/videojuego.jsp")
     public void getFormDeleteVideojuegoById(@PathParam("id") String id) throws VideojuegoException
     {
-
-        FullVideojuego videojuego = service.requestVideojuegoById(id);
 
         models.put("action", Action.DELETE);
         models.put("videojuego", service.requestVideojuegoById(id));
